@@ -1,3 +1,5 @@
+[app url](https://bansheeproject-7bb5a.firebaseapp.com)
+
 # JavaScript Applications: Teamwork Assignment
 
 This document describes the teamwork assignment for Telerik Academy students in "JavaScript Applications" course
