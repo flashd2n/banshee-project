@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>1001 Questions</title>
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="node_modules/toastr/build/toastr.min.css" rel="stylesheet" />
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
+    <script src="node_modules/toastr/toastr.js"></script>
+</head>
+
+<body>
+    <main id="app-container"></main>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyA601PN-6ZuUja-mkz-poJXU8Q7C0DbEJk",
+            authDomain: "bansheeproject-7bb5a.firebaseapp.com",
+            databaseURL: "https://bansheeproject-7bb5a.firebaseio.com",
+            projectId: "bansheeproject-7bb5a",
+            storageBucket: "bansheeproject-7bb5a.appspot.com",
+            messagingSenderId: "305756431785"
+        };
+        firebase.initializeApp(config);
+
+    </script>
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <script src="js/system.config.js"></script>
+</body>
+
+</html>

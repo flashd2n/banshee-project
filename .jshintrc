@@ -22,7 +22,9 @@
     "$": true,
     "document": true,
     "window": true,
-    "navigator": true
+    "navigator": true,
+    "location": true,
+    "firebase": true
   },
   "globalstrict":  true,
   "immed":         true,
