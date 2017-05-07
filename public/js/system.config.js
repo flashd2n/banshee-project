@@ -7,7 +7,11 @@ SystemJS.config({
 
         // app files
         'startup': 'js/startup.js',
-        'router': 'js/router.js'
+        'router': 'js/router.js',
+        'homeController': 'js/controllers/homeController.js',
+        'userController': 'js/controllers/userController.js',
+        'categoriesController': 'js/controllers/categoriesController.js',
+        'questionController': 'js/controllers/questionController.js'
     }
 });
 

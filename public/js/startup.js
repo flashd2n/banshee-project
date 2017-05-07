@@ -1,18 +1,20 @@
 'use strict';
 
 import router from 'router';
+import homeController from 'homeController';
+import userController from 'userController';
+import categoriesController from 'categoriesController';
+import questionController from 'questionController';
 
 // build routes
 
-let $container = $('#app-container');
-
-router.on('', () => $container.html('HOME'))
-    .on('/home', () => $container.html('HOME'))
-    .on('/home/categories/:category', (params) => $container.html(`CATEGORY ${params.category}`))
-    .on('/home/question/:id', (params) => $container.html(`QUESTION ${params.id}`))
-    .on('/home/signin', () => $container.html('SIGN IN'))
-    .on('/home/register', () => $container.html('REGISTER'))
-    .on('/home/logout', () => $container.html('LOGOUT'));
+router.on('', homeController.load)
+    .on('/home', homeController.load)
+    .on('/home/categories/:category', categoriesController.load)
+    .on('/home/question/:id', questionController.load)
+    .on('/home/signin', userController.signin)
+    .on('/home/register', userController.register)
+    .on('/home/logout', userController.logout);
 
 
 // navigate
