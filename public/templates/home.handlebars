@@ -1,0 +1,11 @@
+<h1>Here you can view all questions!</h1>
+<div>TODO: make filtering by date, likes, dislikes, number of comments</div>
+<ul class="allQuestions">
+    {{#each this}}
+    <li>
+        <h2><a href="">{{title}}</a></h2>
+        <p>Category: {{category}} | Likes: {{likes}} | Dislikes: {{dislikes}} | Author: {{author}} | Date: {{date}} | Answers: {{answers.length}}</p>
+
+    </li>
+    {{/each}}
+</ul>

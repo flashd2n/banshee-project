@@ -6,21 +6,20 @@ class CategoriesController {
 
     load(parameters) {
 
-        let $appContainer = $('#app-container');
+        const $APP_CONTAINER = $('#app-container');
 
-        let dataUrl = `https://bansheeproject-7bb5a.firebaseio.com/${parameters.category}-questions.json`;
+        const DATA_URL = `https://bansheeproject-7bb5a.firebaseio.com/${parameters.category}-questions.json`;
 
-        $appContainer.html(`CATEGORY ${parameters.category}`);
+        Promise.all([dataprovider.getQuestions(DATA_URL), dataprovider.getTemplate(`${parameters.category}Category`)])
+            .then(function ([data, renderer]) {
 
-        // get data
+                let template = renderer(data);
 
-        dataprovider.getQuestions(dataUrl).then(function (data) {
-            console.log(data);
-        }).catch(function (error) {
-            console.log(error);
-        });
+                $APP_CONTAINER.html(template);
 
-        // get template
+            }).catch(function () {
+                console.log('Error: category controller promise catch');
+            });
 
 
     }

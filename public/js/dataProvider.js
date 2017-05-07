@@ -4,11 +4,28 @@ import apiService from 'apiService';
 
 class DataProvider {
 
+    constructor() {
+        this._cachedTempaltes = {};
+    }
+
     getQuestions(url) {
 
-        const allData = 'https://bansheeproject-7bb5a.firebaseio.com/.json';
-
         return apiService.get(url);
+    }
+
+    getTemplate(templateName) {
+
+        return apiService.get(`templates/${templateName}.handlebars`)
+            .then(function (template) {
+
+                let renderer = Handlebars.compile(template);
+
+                return Promise.resolve(renderer);
+
+            }).catch(function () {
+                console.log('Error: loading template');
+            });
+
     }
 
 }

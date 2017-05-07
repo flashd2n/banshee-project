@@ -29,7 +29,7 @@ class Router {
 
                 return true;
             } else {
-                $('#app-container').html('<h1>404 Page Not Found</h1>');
+                //TODO: implement some 404 functionality
             }
 
         }

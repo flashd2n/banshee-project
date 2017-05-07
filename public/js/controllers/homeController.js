@@ -10,18 +10,21 @@ class HomeController {
 
         const ALL_QUESTIONS_URL = 'https://bansheeproject-7bb5a.firebaseio.com/.json';
 
-        $APP_CONTAINER.html('HOME');
+        Promise.all([dataprovider.getQuestions(ALL_QUESTIONS_URL), dataprovider.getTemplate('home')])
+            .then(function ([data, renderer]) {
 
-        // get data
+                let cSharpArray = data['c-sharp-questions'];
+                let jsArray = data['javascript-questions'];
 
-        dataprovider.getQuestions(ALL_QUESTIONS_URL).then(function (data) {
-            console.log(data);
-        }).catch(function (error) {
-            console.log(error);
-        });
+                let allQuestions = cSharpArray.concat(jsArray);
 
-        // get template
+                let template = renderer(allQuestions);
 
+                $APP_CONTAINER.html(template);
+
+            }).catch(function () {
+                console.log('Error: homecontroller promise catch');
+            });
 
     }
 }
