@@ -15,6 +15,7 @@ router.on('', homeController.load)
     .on('/home/signin', userController.signin)
     .on('/home/register', userController.register)
     .on('/processRegistration', userController.processRegistration)
+    .on('/processSignin', userController.processSignin)
     .on('/home/logout', userController.logout);
 
 

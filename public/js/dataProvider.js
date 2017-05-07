@@ -27,6 +27,12 @@ class DataProvider {
             });
     }
 
+    signinUser(email, password) {
+
+        return apiService.signin(email, password);
+
+    }
+
     registerUser(username, email, password) {
 
         return apiService.register(email, password).then(function (user) {
@@ -40,11 +46,11 @@ class DataProvider {
         });
 
     }
-    
-    logoutUser(){
-        
+
+    logoutUser() {
+
         return apiService.logout();
-        
+
     }
 
 }

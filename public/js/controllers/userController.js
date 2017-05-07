@@ -8,7 +8,37 @@ class UserController {
 
         const $APP_CONTAINER = $('#app-container');
 
-        $APP_CONTAINER.html('SIGN IN');
+        dataprovider.getTemplate('signin').then(function (renderer) {
+
+            let template = renderer();
+
+            $APP_CONTAINER.html(template);
+
+        });
+
+
+
+    }
+
+    processSignin() {
+
+        let localStorageIdKey = 'userID';
+        let localStorageUsernameKey = 'username';
+        let userEmail = $('#input-email-signin').val();
+        let userPassword = $('#input-password-signin').val();
+
+        dataprovider.signinUser(userEmail, userPassword).then(function () {
+
+            let user = firebase.auth().currentUser;
+
+            window.localStorage.setItem(localStorageIdKey, user.uid);
+            window.localStorage.setItem(localStorageUsernameKey, user.displayName);
+
+            location.hash = '#/home';
+
+        }).catch(function (error) {
+            console.log(error);
+        });
 
     }
 
@@ -30,8 +60,8 @@ class UserController {
     processRegistration() {
 
         // the values from the input fields
-        const LOCAL_STORAGE_ID_KEY = 'userID';
-        const LOCAL_STORAGE_USERNAME_KEY = 'username';
+        let localStorageIdKey = 'userID';
+        let localStorageUsernameKey = 'username';
         let userEmail = $('#input-email').val();
         let userPassword = $('#input-password').val();
         let userName = $('#input-username').val();
@@ -44,8 +74,8 @@ class UserController {
 
             // write to local storage
 
-            window.localStorage.setItem(LOCAL_STORAGE_ID_KEY, userID);
-            window.localStorage.setItem(LOCAL_STORAGE_USERNAME_KEY, userName);
+            window.localStorage.setItem(localStorageIdKey, userID);
+            window.localStorage.setItem(localStorageUsernameKey, userName);
 
             // redirect to home 'logged'
 
