@@ -24,3 +24,27 @@ $(document).ready(function () {
 });
 
 $(window).on('hashchange', router.navigate.bind(router));
+
+
+//let entireDatabase = firebase.database().ref('javascript-questions');
+//
+//entireDatabase.on('value', function (snapshot) {
+//
+//    let data = snapshot.val();
+//
+//}, function (error) {
+//    console.log('some error');
+//});
+
+// receive all data
+
+//$.ajax({
+//    url: 'https://bansheeproject-7bb5a.firebaseio.com/.json',
+//    type: 'GET',
+//    success: function (result) {
+//        console.log(result);
+//    },
+//    error: function (error) {
+//        console.log(error);
+//    }
+//});

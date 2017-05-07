@@ -8,6 +8,8 @@ SystemJS.config({
         // app files
         'startup': 'js/startup.js',
         'router': 'js/router.js',
+        'dataProvider': 'js/dataProvider.js',
+        'apiService': 'js/apiService.js',
         'homeController': 'js/controllers/homeController.js',
         'userController': 'js/controllers/userController.js',
         'categoriesController': 'js/controllers/categoriesController.js',
