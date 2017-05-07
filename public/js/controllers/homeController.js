@@ -10,6 +10,30 @@ class HomeController {
 
         const ALL_QUESTIONS_URL = 'https://bansheeproject-7bb5a.firebaseio.com/.json';
 
+        HomeController.UpdateUI();
+
+        Promise.all([dataprovider.getQuestions(ALL_QUESTIONS_URL), dataprovider.getTemplate('home')])
+            .then(function ([data, renderer]) {
+
+                console.log(data);
+
+                let cSharpArray = data['c-sharp-questions'];
+                let jsArray = data['javascript-questions'];
+
+                let allQuestions = cSharpArray.concat(jsArray);
+
+                let template = renderer(allQuestions);
+
+                $APP_CONTAINER.html(template);
+
+            }).catch(function () {
+                console.log('Error: homecontroller promise catch');
+            });
+
+    }
+
+    static UpdateUI() {
+
         let user = firebase.auth().currentUser;
 
         if (user) {
@@ -29,22 +53,6 @@ class HomeController {
             $('#nav-signin').removeClass('hidden');
             $('#nav-register').removeClass('hidden');
         }
-
-        Promise.all([dataprovider.getQuestions(ALL_QUESTIONS_URL), dataprovider.getTemplate('home')])
-            .then(function ([data, renderer]) {
-
-                let cSharpArray = data['c-sharp-questions'];
-                let jsArray = data['javascript-questions'];
-
-                let allQuestions = cSharpArray.concat(jsArray);
-
-                let template = renderer(allQuestions);
-
-                $APP_CONTAINER.html(template);
-
-            }).catch(function () {
-                console.log('Error: homecontroller promise catch');
-            });
 
     }
 }

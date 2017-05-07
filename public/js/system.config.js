@@ -13,7 +13,8 @@ SystemJS.config({
         'homeController': 'js/controllers/homeController.js',
         'userController': 'js/controllers/userController.js',
         'categoriesController': 'js/controllers/categoriesController.js',
-        'questionController': 'js/controllers/questionController.js'
+        'questionController': 'js/controllers/questionController.js',
+        'submitquestionController': 'js/controllers/submitquestionController.js'
     }
 });
 

@@ -5,6 +5,7 @@ import homeController from 'homeController';
 import userController from 'userController';
 import categoriesController from 'categoriesController';
 import questionController from 'questionController';
+import submitquestionController from 'submitquestionController';
 
 // build routes
 
@@ -16,6 +17,8 @@ router.on('', homeController.load)
     .on('/home/register', userController.register)
     .on('/processRegistration', userController.processRegistration)
     .on('/processSignin', userController.processSignin)
+    .on('/home/submitquestion', submitquestionController.load)
+    .on('/processSubmitQuestion', submitquestionController.processSubmitQuestion)
     .on('/home/logout', userController.logout);
 
 
@@ -50,4 +53,28 @@ $(window).on('hashchange', router.navigate.bind(router));
 //    error: function (error) {
 //        console.log(error);
 //    }
+//});
+
+//let data = JSON.stringify({
+//    title: 'testPUT2'
+//});
+//
+//$.ajax({
+//    url: `https://bansheeproject-7bb5a.firebaseio.com/c-sharp-questions.json`,
+//    type: 'PUT',
+//    data: data,
+//    success: function () {
+//        console.log('did it');
+//    },
+//    error: function (error) {
+//        console.log(error);
+//    }
+//});
+
+// push success
+
+//let jsRef = firebase.database().ref('javascript-questions');
+//
+//jsRef.push({
+//    title: 'test'
 //});

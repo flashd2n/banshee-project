@@ -15,9 +15,6 @@ class UserController {
             $APP_CONTAINER.html(template);
 
         });
-
-
-
     }
 
     processSignin() {
@@ -39,7 +36,6 @@ class UserController {
         }).catch(function (error) {
             console.log(error);
         });
-
     }
 
     register() {
@@ -51,10 +47,7 @@ class UserController {
             let template = renderer();
 
             $APP_CONTAINER.html(template);
-
-
         });
-
     }
 
     processRegistration() {
@@ -70,14 +63,9 @@ class UserController {
 
             let user = firebase.auth().currentUser;
             let userID = user.uid;
-            // successfully registered user and set username
-
-            // write to local storage
 
             window.localStorage.setItem(localStorageIdKey, userID);
             window.localStorage.setItem(localStorageUsernameKey, userName);
-
-            // redirect to home 'logged'
 
             location.hash = '#/home';
 
@@ -87,9 +75,6 @@ class UserController {
         }).catch(function (error) {
             console.log(error);
         });
-        // process registration
-
-        // update profile to add username
 
     }
 
@@ -97,19 +82,22 @@ class UserController {
 
         const $APP_CONTAINER = $('#app-container');
 
+        let localStorageIdKey = 'userID';
+        let localStorageUsernameKey = 'username';
+
         $APP_CONTAINER.html('LOGOUT');
 
         dataprovider.logoutUser().then(function () {
+
+            window.localStorage.removeItem(localStorageIdKey);
+            window.localStorage.removeItem(localStorageUsernameKey);
 
             location.hash = '#/home';
 
         }).catch(function (error) {
             console.log(error);
         });
-
     }
-
-
 }
 
 export default new UserController();
