@@ -10,6 +10,26 @@ class HomeController {
 
         const ALL_QUESTIONS_URL = 'https://bansheeproject-7bb5a.firebaseio.com/.json';
 
+        let user = firebase.auth().currentUser;
+
+        if (user) {
+
+            $('#nav-my-questions').removeClass('hidden');
+            $('#nav-submit-question').removeClass('hidden');
+            $('#nav-logout').removeClass('hidden');
+
+            $('#nav-signin').addClass('hidden');
+            $('#nav-register').addClass('hidden');
+
+        } else {
+            $('#nav-my-questions').addClass('hidden');
+            $('#nav-submit-question').addClass('hidden');
+            $('#nav-logout').addClass('hidden');
+
+            $('#nav-signin').removeClass('hidden');
+            $('#nav-register').removeClass('hidden');
+        }
+
         Promise.all([dataprovider.getQuestions(ALL_QUESTIONS_URL), dataprovider.getTemplate('home')])
             .then(function ([data, renderer]) {
 

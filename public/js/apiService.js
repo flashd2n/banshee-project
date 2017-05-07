@@ -23,6 +23,14 @@ class ApiService {
 
     }
 
+    register(email, password) {
+        return firebase.auth().createUserWithEmailAndPassword(email, password);
+    }
+
+    logout() {
+        return firebase.auth().signOut();
+    }
+
 }
 
 export default new ApiService();

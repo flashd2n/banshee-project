@@ -25,7 +25,26 @@ class DataProvider {
             }).catch(function () {
                 console.log('Error: loading template');
             });
+    }
 
+    registerUser(username, email, password) {
+
+        return apiService.register(email, password).then(function (user) {
+
+            return user.updateProfile({
+                displayName: username
+            });
+
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+    }
+    
+    logoutUser(){
+        
+        return apiService.logout();
+        
     }
 
 }
