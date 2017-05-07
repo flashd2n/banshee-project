@@ -2,20 +2,23 @@
 
 import router from 'router';
 
+// build routes
 
-console.log(router);
-console.log(firebase);
+let $container = $('#app-container');
 
-let playersReference = firebase.database().ref('players');
+router.on('', () => $container.html('HOME'))
+    .on('/home', () => $container.html('HOME'))
+    .on('/home/categories/:category', (params) => $container.html(`CATEGORY ${params.category}`))
+    .on('/home/question/:id', (params) => $container.html(`QUESTION ${params.id}`))
+    .on('/home/signin', () => $container.html('SIGN IN'))
+    .on('/home/register', () => $container.html('REGISTER'))
+    .on('/home/logout', () => $container.html('LOGOUT'));
 
 
-playersReference.set({
-    John: {
-        number: 1,
-        age: 30
-    },
-    Amanda: {
-        number: 2,
-        age: 20
-    }
+// navigate
+
+$(document).ready(function () {
+    location.hash = '#/home';
 });
+
+$(window).on('hashchange', router.navigate.bind(router));

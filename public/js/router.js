@@ -27,7 +27,9 @@ class Router {
 
                 route.callback(parameters);
 
-                return;
+                return true;
+            } else {
+                $('#app-container').html('<h1>404 Page Not Found</h1>');
             }
 
         }
@@ -38,6 +40,7 @@ class Router {
 
         const currentUrlParts = currentUrl.split('/');
         const patternUrlParts = patternUrl.split('/');
+
 
         if (currentUrlParts.length !== patternUrlParts.length) {
             return false;
