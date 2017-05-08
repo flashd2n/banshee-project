@@ -28,16 +28,21 @@ class QuestionController {
 
                 $APP_CONTAINER.html(template);
 
+                // setip links for the answer submit, likes and dislikes for questions
+                let user = firebase.auth().currentUser;
+
                 $('#answer-submit').attr('href', `#/processSubmitAnswer/${questionCategory}/${questionId}`);
+
 
                 let $answerField = $('#answer-field').hide();
                 let $answerButton = $('#leave-answer');
 
                 // check for user login
 
-                let user = firebase.auth().currentUser;
-
                 if (user) {
+
+                    $('#question-like').attr('href', `#/processQuestionLike/${questionCategory}/${questionId}`);
+                    $('#question-dislike').attr('href', `#/processQuestionDislike/${questionCategory}/${questionId}`);
 
                     $answerButton.remove('hidden');
 
@@ -50,6 +55,11 @@ class QuestionController {
 
 
                 } else {
+
+                    $('#question-like').attr('href', `javascript:void(0)`);
+                    $('#question-dislike').attr('href', `javascript:void(0)`);
+
+
                     $answerButton.addClass('hidden');
                 }
 

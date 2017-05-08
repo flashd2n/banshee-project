@@ -1,7 +1,9 @@
 <h1>Question Details</h1>
 <h2>{{title}}</h2>
 <h3>{{body}}</h3>
-<p>Category: {{category}} | Likes: {{likes}} | Dislikes: {{dislikes}} | Author: {{author}} | Date: {{date}}</p>
+
+<p>Category: {{category}} | <a href="" id="question-like">Likes:</a> {{likesCount this}} | <a href="" id="question-dislike">Dislikes:</a> {{dislikesCount this}} | Author: {{author}} | Date: {{date}}</p>
+
 <div id="leave-answer">Leave Answer</div>
 <div id="answer-field">
     <textarea id="answer-body" placeholder="Your Answer"></textarea>
@@ -11,7 +13,7 @@
     {{#each answers}}
     <li>
         <h4>{{this.body}}</h4>
-        <p>Likes: {{this.likes}} | Dislikes: {{this.dislikes}} | Author: {{this.author}} | Date: {{this.date}}</p>
+        <p><a href="#/processAnswerLike/{{../category}}/{{questionId}}/{{@key}}">Likes:</a> {{likesCount this}} | <a href="#/processAnswerDislike/{{../category}}/{{questionId}}/{{@key}}">Dislikes:</a> {{dislikesCount this}} | Author: {{this.author}} | Date: {{this.date}}</p>
     </li>
     {{/each}}
 </ul>

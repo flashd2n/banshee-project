@@ -7,6 +7,9 @@ import categoriesController from 'categoriesController';
 import questionController from 'questionController';
 import submitquestionController from 'submitquestionController';
 import myquestionsController from 'myquestionsController';
+import feedbackController from 'feedbackController';
+
+
 // build routes
 
 Handlebars.registerHelper('answersCount', function (question) {
@@ -65,6 +68,15 @@ Handlebars.registerHelper('ifUser', function (options) {
     }
 });
 
+Handlebars.registerHelper('questionId', function () {
+
+    let id = location.hash.split('/')[3] + '';
+    return id;
+
+});
+
+
+
 
 router.on('', homeController.load)
     .on('/home', homeController.load)
@@ -78,6 +90,10 @@ router.on('', homeController.load)
     .on('/home/myquestions', myquestionsController.load)
     .on('/processSubmitQuestion', submitquestionController.processSubmitQuestion)
     .on('/processSubmitAnswer/:category/:id', questionController.processSubmitAnswer)
+    .on('/processQuestionLike/:category/:id', feedbackController.processQuestionLike)
+    .on('/processQuestionDislike/:category/:id', feedbackController.processQuestionDislike)
+    .on('/processAnswerLike/:category/:questionid/:answerid', feedbackController.processAnswerLike)
+    .on('/processAnswerDislike/:category/:questionid/:answerid', feedbackController.processAnswerDislike)
     .on('/home/logout', userController.logout);
 
 
