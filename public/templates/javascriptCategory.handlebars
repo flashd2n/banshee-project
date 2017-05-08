@@ -3,7 +3,7 @@
 <ul class="allQuestions">
     {{#each this}}
     <li>
-        <h2><a href="#/home/question/{{id}}">{{title}}</a></h2>
+        <h2><a href="#/home/question/{{@key}}">{{title}}</a></h2>
         <p>Category: {{category}} | Likes: {{likes}} | Dislikes: {{dislikes}} | Author: {{author}} | Date: {{date}} | Answers: {{answers.length}}</p>
 
     </li>
