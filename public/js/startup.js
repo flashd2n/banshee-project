@@ -8,75 +8,9 @@ import questionController from 'questionController';
 import submitquestionController from 'submitquestionController';
 import myquestionsController from 'myquestionsController';
 import feedbackController from 'feedbackController';
+import handlebarsHelpers from 'handlebarsHelpers';
 
-
-// build routes
-
-Handlebars.registerHelper('answersCount', function (question) {
-
-    if (question.hasOwnProperty('answers')) {
-
-        let keyCount = Object.keys(question.answers).length;
-        return keyCount + '';
-
-    } else {
-
-        return '0';
-
-    }
-
-});
-
-Handlebars.registerHelper('likesCount', function (question) {
-
-    if (question.hasOwnProperty('likes')) {
-
-        let keyCount = Object.keys(question.likes).length;
-        return keyCount + '';
-
-    } else {
-
-        return '0';
-
-    }
-
-});
-
-Handlebars.registerHelper('dislikesCount', function (question) {
-
-    if (question.hasOwnProperty('dislikes')) {
-
-        let keyCount = Object.keys(question.dislikes).length;
-        return keyCount + '';
-
-    } else {
-
-        return '0';
-
-    }
-
-});
-
-Handlebars.registerHelper('ifUser', function (options) {
-
-    let user = firebase.auth().currentUser;
-
-    if (user) {
-        return options.fn(this);
-    } else {
-        return options.inverse(this);
-    }
-});
-
-Handlebars.registerHelper('questionId', function () {
-
-    let id = location.hash.split('/')[3] + '';
-    return id;
-
-});
-
-
-
+handlebarsHelpers.buildHelpers();
 
 router.on('', homeController.load)
     .on('/home', homeController.load)
@@ -97,40 +31,6 @@ router.on('', homeController.load)
     .on('/home/logout', userController.logout);
 
 
-
-// navigate
-
 $(document).ready(router.navigate.bind(router));
 
 $(window).on('hashchange', router.navigate.bind(router));
-
-
-// receive all data
-
-//$.ajax({
-//    url: 'https://bansheeproject-7bb5a.firebaseio.com/.json',
-//    type: 'GET',
-//    success: function (result) {
-//        console.log(result);
-//    },
-//    error: function (error) {
-//        console.log(error);
-//    }
-//});
-
-
-// push success + thenable set
-
-//firebase.database().ref('javascript-questions')
-//    .push({
-//        title: 'some title JS 3',
-//        body: 'some body',
-//        category: 'c#',
-//        author: 'flash',
-//        date: '1-5-2017',
-//        dislikes: 2,
-//        likes: 1,
-//        answers: {}
-//    }).then(function () {
-//        console.log('sent');
-//    });

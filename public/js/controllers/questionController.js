@@ -28,40 +28,8 @@ class QuestionController {
 
                 $APP_CONTAINER.html(template);
 
-                // setip links for the answer submit, likes and dislikes for questions
-                let user = firebase.auth().currentUser;
 
-                $('#answer-submit').attr('href', `#/processSubmitAnswer/${questionCategory}/${questionId}`);
-
-
-                let $answerField = $('#answer-field').hide();
-                let $answerButton = $('#leave-answer');
-
-                // check for user login
-
-                if (user) {
-
-                    $('#question-like').attr('href', `#/processQuestionLike/${questionCategory}/${questionId}`);
-                    $('#question-dislike').attr('href', `#/processQuestionDislike/${questionCategory}/${questionId}`);
-
-                    $answerButton.remove('hidden');
-
-                    $answerButton.on('click', function () {
-
-
-                        $answerField.slideToggle();
-
-                    });
-
-
-                } else {
-
-                    $('#question-like').attr('href', `javascript:void(0)`);
-                    $('#question-dislike').attr('href', `javascript:void(0)`);
-
-
-                    $answerButton.addClass('hidden');
-                }
+                QuestionController.SetUpLinks(questionCategory, questionId);
 
 
             }).catch(function () {
@@ -122,6 +90,40 @@ class QuestionController {
         let dateAsString = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
 
         return dateAsString;
+    }
+
+    static SetUpLinks(questionCategory, questionId) {
+        let user = firebase.auth().currentUser;
+
+        $('#answer-submit').attr('href', `#/processSubmitAnswer/${questionCategory}/${questionId}`);
+
+
+        let $answerField = $('#answer-field').hide();
+        let $answerButton = $('#leave-answer');
+
+        if (user) {
+
+            $('#question-like').attr('href', `#/processQuestionLike/${questionCategory}/${questionId}`);
+            $('#question-dislike').attr('href', `#/processQuestionDislike/${questionCategory}/${questionId}`);
+
+            $answerButton.remove('hidden');
+
+            $answerButton.on('click', function () {
+
+
+                $answerField.slideToggle();
+
+            });
+
+
+        } else {
+
+            $('#question-like').attr('href', `javascript:void(0)`);
+            $('#question-dislike').attr('href', `javascript:void(0)`);
+
+
+            $answerButton.addClass('hidden');
+        }
     }
 }
 

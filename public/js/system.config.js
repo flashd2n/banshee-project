@@ -18,6 +18,7 @@ SystemJS.config({
         'myquestionsController': 'js/controllers/myquestionsController.js',
         'feedbackController': 'js/controllers/feedbackController.js',
         'sorter': 'js/utils/sorter.js',
+        'handlebarsHelpers': 'js/utils/handlebarsHelpers.js',
     }
 });
 
