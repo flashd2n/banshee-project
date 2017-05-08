@@ -54,6 +54,18 @@ Handlebars.registerHelper('dislikesCount', function (question) {
 
 });
 
+Handlebars.registerHelper('ifUser', function (options) {
+
+    let user = firebase.auth().currentUser;
+
+    if (user) {
+        return options.fn(this);
+    } else {
+        return options.inverse(this);
+    }
+});
+
+
 router.on('', homeController.load)
     .on('/home', homeController.load)
     .on('/home/categories/:category', categoriesController.load)
