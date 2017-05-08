@@ -18,9 +18,7 @@ class ApiService {
     }
 
     get(url) {
-
         return this.request(url, 'GET');
-
     }
 
     signin(email, password) {
@@ -33,6 +31,10 @@ class ApiService {
 
     logout() {
         return firebase.auth().signOut();
+    }
+
+    pushData(reference, data) {
+        return reference.push(data);
     }
 
 }
