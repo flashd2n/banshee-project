@@ -100,9 +100,7 @@ router.on('', homeController.load)
 
 // navigate
 
-$(document).ready(function () {
-    location.hash = '#/home';
-});
+$(document).ready(router.navigate.bind(router));
 
 $(window).on('hashchange', router.navigate.bind(router));
 

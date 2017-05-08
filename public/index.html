@@ -11,9 +11,32 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="node_modules/toastr/toastr.js"></script>
+
 </head>
 
 <body>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '296364600801700',
+                xfbml: true,
+                version: 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
 
     <header>
         <nav>
@@ -32,6 +55,9 @@
                 </li>
                 <li id="nav-submit-question">
                     <a href="#/home/submitquestion">SUBMIT QUESTION</a>
+                </li>
+                <li id="facebook-nav">
+                    <div id="shareBtn">SHARE PAGE</div>
                 </li>
             </ul>
             <ul>

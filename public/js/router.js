@@ -25,6 +25,14 @@ class Router {
 
             if (parameters) {
 
+                $('#shareBtn').on('click', function () {
+                    FB.ui({
+                        method: 'share',
+                        display: 'popup',
+                        href: window.location.href,
+                    }, function (response) {});
+                });
+
                 route.callback(parameters);
 
                 return true;
@@ -70,6 +78,7 @@ class Router {
         return parameters;
 
     }
+
 }
 
 export default new Router();
