@@ -15,12 +15,8 @@ class FeedbackController {
             user: user
         };
 
-        dataprovider.sendFeedback(path, data).then(function () {
-            console.log('question like sent');
-            location.hash = '#/home';
-        }).catch(function () {
-            console.log('question like fail');
-        });
+        FeedbackController.SendDataToProvider(user, path, data);
+
     }
 
     processQuestionDislike(parameters) {
@@ -33,12 +29,7 @@ class FeedbackController {
             user: user
         };
 
-        dataprovider.sendFeedback(path, data).then(function () {
-            console.log('question dislike sent');
-            location.hash = '#/home';
-        }).catch(function () {
-            console.log('question dislike fail');
-        });
+        FeedbackController.SendDataToProvider(user, path, data);
     }
 
     processAnswerLike(parameters) {
@@ -52,12 +43,7 @@ class FeedbackController {
             user: user
         };
 
-        dataprovider.sendFeedback(path, data).then(function () {
-            console.log('answer like sent');
-            location.hash = '#/home';
-        }).catch(function () {
-            console.log('question dislike fail');
-        });
+        FeedbackController.SendDataToProvider(user, path, data);
 
     }
 
@@ -72,11 +58,26 @@ class FeedbackController {
             user: user
         };
 
-        dataprovider.sendFeedback(path, data).then(function () {
-            console.log('answer dislike sent');
-            location.hash = '#/home';
+        FeedbackController.SendDataToProvider(user, path, data);
+
+    }
+
+    static SendDataToProvider(user, path, data) {
+
+
+        dataprovider.checkFeedbackStatus(user, path).then(function () {
+
+            dataprovider.sendFeedback(path, data).then(function () {
+                console.log('feedback sent');
+                window.history.back();
+            }).catch(function () {
+                window.history.back();
+                console.log('feedback fail');
+            });
+
         }).catch(function () {
-            console.log('question dislike fail');
+            window.history.back();
+            console.log('feedback exists');
         });
 
     }

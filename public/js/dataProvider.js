@@ -70,6 +70,12 @@ class DataProvider {
 
     }
 
+    checkFeedbackStatus(user, path) {
+
+        return apiService.feedbackStatus(user, path);
+
+    }
+
 }
 
 

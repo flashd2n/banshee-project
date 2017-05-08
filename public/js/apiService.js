@@ -37,6 +37,42 @@ class ApiService {
         return reference.push(data);
     }
 
+    feedbackStatus(user, path) {
+
+        let promise = new Promise(function (resolve, reject) {
+
+            let reference = firebase.database().ref(path);
+
+            reference.once('value', function (snapshot) {
+
+                let allLikes = snapshot.val();
+
+                if (allLikes) {
+
+                    for (let id in allLikes) {
+
+                        if (allLikes[id].user === user) {
+
+                            reject();
+
+                        }
+                    }
+
+
+                } else {
+                    console.log('here');
+
+                    resolve();
+                }
+
+                resolve();
+
+            });
+        });
+
+        return promise;
+    }
+
 }
 
 export default new ApiService();
