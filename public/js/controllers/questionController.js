@@ -8,7 +8,8 @@ class QuestionController {
 
         let $APP_CONTAINER = $('#app-container');
 
-        let questionId = Number(parameters.id);
+        let questionId = parameters.id;
+
 
         // get all questions
 
@@ -17,23 +18,16 @@ class QuestionController {
         Promise.all([dataprovider.getQuestions(ALL_QUESTIONS_URL), dataprovider.getTemplate('question')])
             .then(function ([data, renderer]) {
 
-                let cSharpArray = data['c-sharp-questions'];
-                let jsArray = data['javascript-questions'];
+                let allQuestions = Object.assign(data['c-sharp-questions'], data['javascript-questions']);
 
-                let allQuestions = cSharpArray.concat(jsArray);
-
-                console.log(allQuestions);
-
-                let questionToDisplay = allQuestions.find(x => x.id === questionId);
-
-                console.log(questionToDisplay);
+                let questionToDisplay = allQuestions[questionId];
 
                 let template = renderer(questionToDisplay);
 
                 $APP_CONTAINER.html(template);
 
             }).catch(function () {
-                console.log('Error: homecontroller promise catch');
+                console.log('Error: question controller promise catch');
             });
 
     }

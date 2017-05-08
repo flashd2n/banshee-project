@@ -13,6 +13,8 @@ class CategoriesController {
         Promise.all([dataprovider.getQuestions(DATA_URL), dataprovider.getTemplate(`${parameters.category}Category`)])
             .then(function ([data, renderer]) {
 
+                console.log(data);
+
                 let template = renderer(data);
 
                 $APP_CONTAINER.html(template);

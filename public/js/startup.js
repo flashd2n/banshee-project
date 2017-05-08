@@ -32,16 +32,6 @@ $(document).ready(function () {
 $(window).on('hashchange', router.navigate.bind(router));
 
 
-//let entireDatabase = firebase.database().ref('javascript-questions');
-//
-//entireDatabase.on('value', function (snapshot) {
-//
-//    let data = snapshot.val();
-//
-//}, function (error) {
-//    console.log('some error');
-//});
-
 // receive all data
 
 //$.ajax({
@@ -55,26 +45,19 @@ $(window).on('hashchange', router.navigate.bind(router));
 //    }
 //});
 
-//let data = JSON.stringify({
-//    title: 'testPUT2'
-//});
-//
-//$.ajax({
-//    url: `https://bansheeproject-7bb5a.firebaseio.com/c-sharp-questions.json`,
-//    type: 'PUT',
-//    data: data,
-//    success: function () {
-//        console.log('did it');
-//    },
-//    error: function (error) {
-//        console.log(error);
-//    }
-//});
 
-// push success
+// push success + thenable set
 
-//let jsRef = firebase.database().ref('javascript-questions');
-//
-//jsRef.push({
-//    title: 'test'
-//});
+//firebase.database().ref('javascript-questions')
+//    .push({
+//        title: 'some title JS 3',
+//        body: 'some body',
+//        category: 'c#',
+//        author: 'flash',
+//        date: '1-5-2017',
+//        dislikes: 2,
+//        likes: 1,
+//        answers: {}
+//    }).then(function () {
+//        console.log('sent');
+//    });

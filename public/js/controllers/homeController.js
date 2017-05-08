@@ -15,12 +15,7 @@ class HomeController {
         Promise.all([dataprovider.getQuestions(ALL_QUESTIONS_URL), dataprovider.getTemplate('home')])
             .then(function ([data, renderer]) {
 
-                console.log(data);
-
-                let cSharpArray = data['c-sharp-questions'];
-                let jsArray = data['javascript-questions'];
-
-                let allQuestions = cSharpArray.concat(jsArray);
+                let allQuestions = Object.assign(data['c-sharp-questions'], data['javascript-questions']);
 
                 let template = renderer(allQuestions);
 
