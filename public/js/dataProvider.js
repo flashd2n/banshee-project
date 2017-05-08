@@ -63,6 +63,13 @@ class DataProvider {
         return apiService.pushData(reference, data);
     }
 
+    sendFeedback(path, data) {
+
+        let reference = firebase.database().ref(path);
+        return apiService.pushData(reference, data);
+
+    }
+
 }
 
 
