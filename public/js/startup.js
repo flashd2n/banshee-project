@@ -6,7 +6,7 @@ import userController from 'userController';
 import categoriesController from 'categoriesController';
 import questionController from 'questionController';
 import submitquestionController from 'submitquestionController';
-
+import myquestionsController from 'myquestionsController';
 // build routes
 
 router.on('', homeController.load)
@@ -18,6 +18,7 @@ router.on('', homeController.load)
     .on('/processRegistration', userController.processRegistration)
     .on('/processSignin', userController.processSignin)
     .on('/home/submitquestion', submitquestionController.load)
+    .on('/home/myquestions', myquestionsController.load)
     .on('/processSubmitQuestion', submitquestionController.processSubmitQuestion)
     .on('/home/logout', userController.logout);
 

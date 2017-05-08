@@ -53,6 +53,8 @@ class SubmitQuestionController {
         let date = SubmitQuestionController.BuildDate();
         let dislikes = 0;
         let likes = 0;
+        let userEmail = firebase.auth().currentUser.email;
+
 
         let options = {
             title: title,
@@ -61,7 +63,8 @@ class SubmitQuestionController {
             author: author,
             date: date,
             dislikes: dislikes,
-            likes: likes
+            likes: likes,
+            email: userEmail
         };
 
         return options;
