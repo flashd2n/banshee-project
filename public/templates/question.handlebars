@@ -2,6 +2,11 @@
 <h2>{{title}}</h2>
 <h3>{{body}}</h3>
 <p>Category: {{category}} | Likes: {{likes}} | Dislikes: {{dislikes}} | Author: {{author}} | Date: {{date}}</p>
+<div id="leave-answer">Leave Answer</div>
+<div id="answer-field">
+    <textarea id="answer-body" placeholder="Your Answer"></textarea>
+    <a id="answer-submit">Submit Answer</a>
+</div>
 <ul class="allComments">
     {{#each answers}}
     <li>

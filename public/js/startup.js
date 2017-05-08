@@ -9,6 +9,21 @@ import submitquestionController from 'submitquestionController';
 import myquestionsController from 'myquestionsController';
 // build routes
 
+Handlebars.registerHelper('answersCount', function (question) {
+
+    if (question.hasOwnProperty('answers')) {
+
+        let keyCount = Object.keys(question.answers).length;
+        return keyCount + '';
+
+    } else {
+
+        return '0';
+
+    }
+
+});
+
 router.on('', homeController.load)
     .on('/home', homeController.load)
     .on('/home/categories/:category', categoriesController.load)
@@ -20,6 +35,7 @@ router.on('', homeController.load)
     .on('/home/submitquestion', submitquestionController.load)
     .on('/home/myquestions', myquestionsController.load)
     .on('/processSubmitQuestion', submitquestionController.processSubmitQuestion)
+    .on('/processSubmitAnswer/:category/:id', questionController.processSubmitAnswer)
     .on('/home/logout', userController.logout);
 
 
