@@ -1,6 +1,7 @@
 'use strict';
 
 import dataprovider from 'dataProvider';
+import sorter from 'sorter';
 
 class HomeController {
 
@@ -12,14 +13,40 @@ class HomeController {
 
         HomeController.UpdateUI();
 
-        Promise.all([dataprovider.getQuestions(ALL_QUESTIONS_URL), dataprovider.getTemplate('home')])
-            .then(function ([data, renderer]) {
+        Promise.all([dataprovider.getQuestions(ALL_QUESTIONS_URL), dataprovider.getTemplate('home'), dataprovider.getTemplate('sorting')])
+            .then(function ([data, renderer, rendererSorting]) {
 
                 let allQuestions = Object.assign(data['c-sharp-questions'], data['javascript-questions']);
 
-                let template = renderer(allQuestions);
+                let allData = sorter.newest(allQuestions);
+
+                let template = renderer(allData);
 
                 $APP_CONTAINER.html(template);
+
+                $('#most-liked').on('click', () => {
+                    allData = sorter.mostLiked(allQuestions);
+                    template = rendererSorting(allData);
+                    $('#questions').html(template);
+                });
+
+                $('#most-disliked').on('click', () => {
+                    allData = sorter.mostDisliked(allQuestions);
+                    template = rendererSorting(allData);
+                    $('#questions').html(template);
+                });
+
+                $('#newest').on('click', () => {
+                    allData = sorter.newest(allQuestions);
+                    template = rendererSorting(allData);
+                    $('#questions').html(template);
+                });
+
+                $('#oldest').on('click', () => {
+                    allData = sorter.oldest(allQuestions);
+                    template = rendererSorting(allData);
+                    $('#questions').html(template);
+                });
 
             }).catch(function () {
                 console.log('Error: homecontroller promise catch');

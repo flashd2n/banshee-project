@@ -59,8 +59,9 @@ class SubmitQuestionController {
             body: body,
             category: questionCategory,
             author: author,
-            date: date,
-            email: userEmail
+            date: date.date,
+            email: userEmail,
+            dateDetails: date.dateDetails
         };
 
         return options;
@@ -68,11 +69,21 @@ class SubmitQuestionController {
     }
 
     static BuildDate() {
+
         let date = new Date();
 
         let dateAsString = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
 
-        return dateAsString;
+        let dateDetails = new Date(date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds());
+
+        let dateDetailsString = dateDetails.toString();
+
+        let result = {
+            date: dateAsString,
+            dateDetails: dateDetailsString
+        };
+
+        return result;
     }
 
 }

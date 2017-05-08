@@ -17,6 +17,7 @@ SystemJS.config({
         'submitquestionController': 'js/controllers/submitquestionController.js',
         'myquestionsController': 'js/controllers/myquestionsController.js',
         'feedbackController': 'js/controllers/feedbackController.js',
+        'sorter': 'js/utils/sorter.js',
     }
 });
 

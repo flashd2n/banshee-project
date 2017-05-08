@@ -1,16 +1,16 @@
 <h1>Here you can view all javascript questions!</h1>
-<div>TODO: make filtering by date, likes, dislikes, number of comments</div>
-<ul class="allQuestions">
+<div>Sort by: <span id="most-liked">Most Liked</span> | <span id="most-disliked">Most Disliked</span> | <span id="newest">Newest</span> | <span id="oldest">Oldest</span></div>
+<ul id="questions">
 
     {{#ifUser}} {{#each this}}
     <li>
-        <h2><a href="#/home/question/{{@key}}">{{title}}</a></h2>
-        <p>Category: {{category}} | <a href="#/processQuestionLike/{{category}}/{{@key}}">Likes:</a> {{likesCount this}} | <a href="#/processQuestionDislike/{{category}}/{{@key}}">Dislikes</a>: {{dislikesCount this}} | Author: {{author}} | Date: {{date}} | Answers: {{answersCount this}}</p>
+        <h2><a href="#/home/question/{{id}}">{{title}}</a></h2>
+        <p>Category: {{category}} | <a href="#/processQuestionLike/{{category}}/{{id}}">Likes:</a> {{likesCount this}} | <a href="#/processQuestionDislike/{{category}}/{{id}}">Dislikes</a>: {{dislikesCount this}} | Author: {{author}} | Date: {{date}} | Answers: {{answersCount this}}</p>
 
     </li>
     {{/each}} {{else}} {{#each this}}
     <li>
-        <h2><a href="#/home/question/{{@key}}">{{title}}</a></h2>
+        <h2><a href="#/home/question/{{id}}">{{title}}</a></h2>
         <p>Category: {{category}} | <a href="javascript:void(0)">Likes:</a> {{likesCount this}} | <a href="javascript:void(0)">Dislikes</a>: {{dislikesCount this}} | Author: {{author}} | Date: {{date}} | Answers: {{answersCount this}}</p>
 
     </li>
