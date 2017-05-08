@@ -24,6 +24,36 @@ Handlebars.registerHelper('answersCount', function (question) {
 
 });
 
+Handlebars.registerHelper('likesCount', function (question) {
+
+    if (question.hasOwnProperty('likes')) {
+
+        let keyCount = Object.keys(question.likes).length;
+        return keyCount + '';
+
+    } else {
+
+        return '0';
+
+    }
+
+});
+
+Handlebars.registerHelper('dislikesCount', function (question) {
+
+    if (question.hasOwnProperty('dislikes')) {
+
+        let keyCount = Object.keys(question.dislikes).length;
+        return keyCount + '';
+
+    } else {
+
+        return '0';
+
+    }
+
+});
+
 router.on('', homeController.load)
     .on('/home', homeController.load)
     .on('/home/categories/:category', categoriesController.load)

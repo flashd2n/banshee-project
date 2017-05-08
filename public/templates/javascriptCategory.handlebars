@@ -4,7 +4,7 @@
     {{#each this}}
     <li>
         <h2><a href="#/home/question/{{@key}}">{{title}}</a></h2>
-        <p>Category: {{category}} | Likes: {{likes}} | Dislikes: {{dislikes}} | Author: {{author}} | Date: {{date}} | Answers: {{answersCount this}}</p>
+        <p>Category: {{category}} | Likes: {{likesCount this}} | Dislikes: {{dislikesCount this}} | Author: {{author}} | Date: {{date}} | Answers: {{answersCount this}}</p>
 
     </li>
     {{/each}}

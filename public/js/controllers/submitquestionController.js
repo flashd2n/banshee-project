@@ -51,8 +51,6 @@ class SubmitQuestionController {
 
         let author = firebase.auth().currentUser.displayName;
         let date = SubmitQuestionController.BuildDate();
-        let dislikes = 0;
-        let likes = 0;
         let userEmail = firebase.auth().currentUser.email;
 
 
@@ -62,8 +60,6 @@ class SubmitQuestionController {
             category: questionCategory,
             author: author,
             date: date,
-            dislikes: dislikes,
-            likes: likes,
             email: userEmail
         };
 

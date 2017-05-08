@@ -22,15 +22,6 @@ class QuestionController {
 
                 let questionToDisplay = allQuestions[questionId];
 
-
-
-//                if (questionToDisplay.hasOwnProperty('answers')) {
-    //                    console.log(Object.keys(questionToDisplay.answers).length);
-    //                } else {
-    //                    console.log(0);
-    //                }
-
-
                 let questionCategory = questionToDisplay.category;
 
                 let template = renderer(questionToDisplay);
@@ -102,15 +93,12 @@ class QuestionController {
         let body = $('#answer-body').val();
         let date = QuestionController.BuildDate();
         let author = firebase.auth().currentUser.displayName;
-        let dislikes = 0;
-        let likes = 0;
+
 
         let options = {
             body: body,
             date: date,
-            author: author,
-            dislikes: dislikes,
-            likes: likes
+            author: author
         };
 
         return options;
