@@ -26,7 +26,7 @@ class MyQuestionsController {
                 $APP_CONTAINER.html(template);
 
             }).catch(function () {
-                console.log('Error: question controller promise catch');
+                console.log('Error: myquestions controller promise catch');
             });
 
     }
@@ -36,6 +36,22 @@ class MyQuestionsController {
         let userEmail = firebase.auth().currentUser.email;
 
         // have all questions and user email
+
+        let questionsToDisplay = {};
+
+        for (let questionID in allQuestions) {
+
+            let questionEmail = allQuestions[questionID].email;
+
+            if (questionEmail === userEmail) {
+
+                questionsToDisplay[questionID] = allQuestions[questionID];
+
+            }
+
+        }
+
+        return questionsToDisplay;
 
     }
 
