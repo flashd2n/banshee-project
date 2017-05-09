@@ -3,6 +3,8 @@
 import mySorter from '../js/utils/sorter.js';
 import handlebarsHelpers from '../js/utils/handlebarsHelpers.js';
 import router from '../js/router.js';
+import apiService from '../js/apiService.js';
+
 
 mocha.setup('bdd');
 const expect = chai.expect;
@@ -293,7 +295,21 @@ describe('Router Tests', function () {
     });
 
 
-})
+});
+
+describe('API Service Tests', function () {
+
+    it('Expect Api service request to return a promise', function (done) {
+
+        let result = apiService.request('url/some', 'GET').then(() => console.log('x')).catch(() => console.log('y'));
+
+        expect(result.constructor.name).to.equal('Promise');
+        done();
+
+
+    });
+
+});
 
 
 
