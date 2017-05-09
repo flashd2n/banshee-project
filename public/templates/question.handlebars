@@ -1,19 +1,20 @@
-<h1>Question Details</h1>
-<h2>{{title}}</h2>
-<h3>{{body}}</h3>
+<div class="well">
+    <h2>{{title}}</h2>
+    <h3>{{body}}</h3>
 
-<p>Category: {{category}} | <a href="" id="question-like">Likes:</a> {{likesCount this}} | <a href="" id="question-dislike">Dislikes:</a> {{dislikesCount this}} | Author: {{author}} | Date: {{date}}</p>
+    <p>Category: {{category}} | <a href="" id="question-like" class="btn btn-xs btn-primary">Likes:</a> {{likesCount this}} | <a href="" id="question-dislike" class="btn btn-xs btn-danger">Dislikes:</a> {{dislikesCount this}} | Author: {{author}} | Date: {{date}}</p>
 
-<div id="leave-answer">Leave Answer</div>
-<div id="answer-field">
-    <textarea id="answer-body" placeholder="Your Answer"></textarea>
-    <a id="answer-submit">Submit Answer</a>
+    <div class="label label-info" id="leave-answer">Leave Answer</div>
+    <div id="answer-field">
+        <textarea class="form-control" rows="3" id="answer-body" placeholder="Your Answer"></textarea>
+        <a class="btn btn-success" id="answer-submit">Submit Answer</a>
+    </div>
+    <ul class="allComments">
+        {{#each answers}}
+        <li>
+            <h4>{{this.body}}</h4>
+            <p><a href="#/processAnswerLike/{{../category}}/{{questionId}}/{{@key}}" class="label label-info">Likes:</a> {{likesCount this}} | <a href="#/processAnswerDislike/{{../category}}/{{questionId}}/{{@key}}" class="label label-info">Dislikes:</a> {{dislikesCount this}} | Author: {{this.author}} | Date: {{this.date}}</p>
+        </li>
+        {{/each}}
+    </ul>
 </div>
-<ul class="allComments">
-    {{#each answers}}
-    <li>
-        <h4>{{this.body}}</h4>
-        <p><a href="#/processAnswerLike/{{../category}}/{{questionId}}/{{@key}}">Likes:</a> {{likesCount this}} | <a href="#/processAnswerDislike/{{../category}}/{{questionId}}/{{@key}}">Dislikes:</a> {{dislikesCount this}} | Author: {{this.author}} | Date: {{this.date}}</p>
-    </li>
-    {{/each}}
-</ul>

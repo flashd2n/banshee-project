@@ -1,19 +1,20 @@
-<h1>Here you can view your questions!</h1>
+<h1>My Questions!</h1>
 <ul class="allQuestions">
     {{#each this}}
     <li>
-        <h2><a href="#/home/question/{{@key}}">{{title}}</a></h2>
-        <p>Category: {{category}} | <a href="#/processQuestionLike/{{category}}/{{@key}}">Likes:</a> {{likesCount this}} | <a href="#/processQuestionDislike/{{category}}/{{@key}}">Dislikes</a>: {{dislikesCount this}} | Author: {{author}} | Date: {{date}} | Answers: {{answersCount this}}</p>
+        <div class="well">
+            <h2><a href="#/home/question/{{@key}}">{{title}}</a></h2>
+            <p>Category: {{category}} | <a href="#/processQuestionLike/{{category}}/{{@key}}" class="btn btn-xs btn-primary">Likes:</a> {{likesCount this}} | <a href="#/processQuestionDislike/{{category}}/{{@key}}" class="btn btn-xs btn-danger">Dislikes</a>: {{dislikesCount this}} | Author: {{author}} | Date: {{date}} | Answers: {{answersCount this}}</p>
 
-        <ul class="answers">
-            {{#each answers}}
-            <li>
-                <h4>{{this.body}}</h4>
-                <p><a href="#/processAnswerLike/{{../category}}/{{@../key}}/{{@key}}">Likes:</a> {{likesCount this}} | <a href="#/processAnswerDislike/{{../category}}/{{@../key}}/{{@key}}">Dislikes:</a> {{dislikesCount this}} | Author: {{this.author}} | Date: {{this.date}}</p>
-            </li>
-            {{/each}}
-        </ul>
-
+            <ul class="answers">
+                {{#each answers}}
+                <li>
+                    <h4>{{this.body}}</h4>
+                    <p><a href="#/processAnswerLike/{{../category}}/{{@../key}}/{{@key}}" class="label label-info">Likes:</a> {{likesCount this}} | <a href="#/processAnswerDislike/{{../category}}/{{@../key}}/{{@key}}" class="label label-info">Dislikes:</a> {{dislikesCount this}} | Author: {{this.author}} | Date: {{this.date}}</p>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
     </li>
     {{/each}}
 </ul>

@@ -14,6 +14,15 @@ class SubmitQuestionController {
 
             $APP_CONTAINER.html(template);
 
+            $('ul li').removeClass('active');
+
+            $(`#nav-submit-question`).addClass('active');
+
+            $('#question-title').tooltip({
+                track: true
+            });
+
+
         });
 
     }

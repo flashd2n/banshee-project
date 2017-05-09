@@ -24,6 +24,10 @@ class HomeController {
 
                 $APP_CONTAINER.html(template);
 
+                $('ul li').removeClass('active');
+
+                $(`#nav-home`).addClass('active');
+
                 $('#most-liked').on('click', () => {
                     allData = sorter.mostLiked(allQuestions);
                     template = rendererSorting(allData);

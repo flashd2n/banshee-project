@@ -25,6 +25,10 @@ class MyQuestionsController {
 
                 $APP_CONTAINER.html(template);
 
+                $('ul li').removeClass('active');
+
+                $(`#nav-my-questions`).addClass('active');
+
             }).catch(function () {
                 console.log('Error: myquestions controller promise catch');
             });

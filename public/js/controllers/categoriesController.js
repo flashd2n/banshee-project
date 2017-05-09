@@ -20,6 +20,10 @@ class CategoriesController {
 
                 $APP_CONTAINER.html(template);
 
+                $('ul li').removeClass('active');
+
+                $(`#nav-${parameters.category}`).addClass('active');
+
                 $('#most-liked').on('click', () => {
                     allData = sorter.mostLiked(data);
                     template = rendererSorting(allData);

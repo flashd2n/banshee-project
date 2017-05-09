@@ -14,6 +14,11 @@ class UserController {
 
             $APP_CONTAINER.html(template);
 
+            $('ul li').removeClass('active');
+
+            $(`#nav-signin`).addClass('active');
+
+
         });
     }
 
@@ -47,6 +52,10 @@ class UserController {
             let template = renderer();
 
             $APP_CONTAINER.html(template);
+
+            $('ul li').removeClass('active');
+
+            $(`#nav-register`).addClass('active');
         });
     }
 

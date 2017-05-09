@@ -1,18 +1,20 @@
 <h1>Here you can view all questions!</h1>
-<div>Sort by: <span id="most-liked">Most Liked</span> | <span id="most-disliked">Most Disliked</span> | <span id="newest">Newest</span> | <span id="oldest">Oldest</span></div>
+<div>Sort by: <span class="btn btn-xs btn-warning" id="most-liked">Most Liked</span> | <span class="btn btn-xs btn-warning" id="most-disliked">Most Disliked</span> | <span class="btn btn-xs btn-warning" id="newest">Newest</span> | <span class="btn btn-xs btn-warning" id="oldest">Oldest</span></div>
 <ul id="questions">
 
     {{#ifUser}} {{#each this}}
     <li>
-        <h2><a href="#/home/question/{{id}}">{{title}}</a></h2>
-        <p>Category: {{category}} | <a href="#/processQuestionLike/{{category}}/{{id}}">Likes:</a> {{likesCount this}} | <a href="#/processQuestionDislike/{{category}}/{{id}}">Dislikes</a>: {{dislikesCount this}} | Author: {{author}} | Date: {{date}} | Answers: {{answersCount this}}</p>
-
+        <div class="well">
+            <h2><a href="#/home/question/{{id}}">{{title}}</a></h2>
+            <p>Category: {{category}} | <a href="#/processQuestionLike/{{category}}/{{id}}" class="btn btn-xs btn-primary">Likes:</a> {{likesCount this}} | <a href="#/processQuestionDislike/{{category}}/{{id}}" class="btn btn-xs btn-danger">Dislikes:</a> {{dislikesCount this}} | Author: {{author}} | Date: {{date}} | Answers: {{answersCount this}}</p>
+        </div>
     </li>
     {{/each}} {{else}} {{#each this}}
     <li>
-        <h2><a href="#/home/question/{{id}}">{{title}}</a></h2>
-        <p>Category: {{category}} | <a href="javascript:void(0)">Likes:</a> {{likesCount this}} | <a href="javascript:void(0)">Dislikes</a>: {{dislikesCount this}} | Author: {{author}} | Date: {{date}} | Answers: {{answersCount this}}</p>
-
+        <div class="well">
+            <h2><a href="#/home/question/{{id}}">{{title}}</a></h2>
+            <p>Category: {{category}} | <a href="javascript:void(0)" class="btn btn-xs btn-primary">Likes:</a> {{likesCount this}} | <a href="javascript:void(0)" class="btn btn-xs btn-danger">Dislikes:</a> {{dislikesCount this}} | Author: {{author}} | Date: {{date}} | Answers: {{answersCount this}}</p>
+        </div>
     </li>
     {{/each}} {{/ifUser}}
 </ul>

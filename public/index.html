@@ -3,12 +3,17 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>1001 Questions</title>
     <link href="css/main.css" rel="stylesheet" />
-    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="node_modules/jqueryui/jquery-ui.min.css" rel="stylesheet" type="text/css" />
     <link href="node_modules/toastr/build/toastr.min.css" rel="stylesheet" />
 
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/jqueryui/jquery-ui.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/handlebars/dist/handlebars.min.js"></script>
     <script src="node_modules/toastr/toastr.js"></script>
 
@@ -39,43 +44,55 @@
     </script>
 
     <header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#/home">HOME</a>
-                </li>
-                <li>
-                    <a href="#/home/categories/javascript">JAVASCRIPT</a>
-                </li>
-                <li>
-                    <a href="#/home/categories/c-sharp">C#</a>
-                </li>
-                <li id="nav-my-questions">
-                    <a href="#/home/myquestions">MY QUESTIONS</a>
-                </li>
-                <li id="nav-submit-question">
-                    <a href="#/home/submitquestion">SUBMIT QUESTION</a>
-                </li>
-                <li id="facebook-nav">
-                    <div id="shareBtn">SHARE PAGE</div>
-                </li>
-            </ul>
-            <ul>
-                <li id="nav-signin">
-                    <a href="#/home/signin">SIGN IN</a>
-                </li>
-                <li id="nav-register">
-                    <a href="#/home/register">REGISTER</a>
-                </li>
-                <li id="nav-logout">
-                    <a href="#/home/logout">LOGOUT</a>
-                </li>
-            </ul>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+                    <a class="navbar-brand" href="#">1001 Questions</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul id="main-nav" class="nav navbar-nav">
+                        <li id="nav-home" class="active">
+                            <a href="#/home">HOME</a>
+                        </li>
+                        <li id="nav-javascript">
+                            <a href="#/home/categories/javascript">JAVASCRIPT</a>
+                        </li>
+                        <li id="nav-c-sharp">
+                            <a href="#/home/categories/c-sharp">C#</a>
+                        </li>
+                        <li id="nav-my-questions">
+                            <a href="#/home/myquestions">MY QUESTIONS</a>
+                        </li>
+                        <li id="nav-submit-question">
+                            <a href="#/home/submitquestion">SUBMIT QUESTION</a>
+                        </li>
+                        <li>
+                            <a href="JavaScript:Void(0);" id="shareBtn">SHARE PAGE</a>
+                        </li>
+                        <li id="nav-signin">
+                            <a href="#/home/signin">SIGN IN</a>
+                        </li>
+                        <li id="nav-register">
+                            <a href="#/home/register">REGISTER</a>
+                        </li>
+                        <li id="nav-logout">
+                            <a href="#/home/logout">LOGOUT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
+
     </header>
-
-    <main id="app-container"></main>
-
+    <div class="container">
+        <main id="app-container"></main>
+    </div>
 
 
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
