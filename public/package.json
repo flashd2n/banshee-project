@@ -10,9 +10,13 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "chai": "^3.5.0",
     "core-js": "^2.4.1",
     "handlebars": "^4.0.8",
     "jquery": "^3.2.1",
+    "mocha": "^3.3.0",
+    "sinon": "^2.2.0",
+    "sinon-chai": "^2.10.0",
     "systemjs": "^0.20.12",
     "systemjs-plugin-babel": "0.0.21",
     "toastr": "^2.1.2"
