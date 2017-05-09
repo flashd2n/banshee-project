@@ -19,6 +19,7 @@ class Router {
 
         const currentUrl = location.hash.slice(1);
 
+
         for (let route of this._routes) {
 
             const parameters = this.matchUrls(currentUrl, route.patternUrl);

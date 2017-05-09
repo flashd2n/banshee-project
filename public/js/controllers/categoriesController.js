@@ -47,8 +47,6 @@ class CategoriesController {
             }).catch(function () {
                 console.log('Error: category controller promise catch');
             });
-
-
     }
 }
 

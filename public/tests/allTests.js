@@ -2,6 +2,7 @@
 
 import mySorter from '../js/utils/sorter.js';
 import handlebarsHelpers from '../js/utils/handlebarsHelpers.js';
+import router from '../js/router.js';
 
 mocha.setup('bdd');
 const expect = chai.expect;
@@ -204,6 +205,96 @@ describe('Handlebars Helpers Tests', function () {
     });
 
 });
+
+describe('Router Tests', function () {
+
+
+    it('Expect new instance of router to have an empty routes array', function () {
+
+        expect(router).to.have.property('_routes');
+        expect(router._routes).to.have.length(0);
+
+    });
+
+    it('Expect on method to successfully push new route when valid data is passed', function () {
+
+        let url = '/homee';
+        let callback = function () {
+            return 5;
+        };
+
+        router.on(url, callback);
+
+        expect(router._routes).to.have.length(1);
+
+
+    });
+
+    it('Expect on method to correctly pass the parameters in the routes array when valid data is passed', function () {
+
+        let url = '/homee';
+        let callback = function () {
+            return 5;
+        };
+
+        router.on(url, callback);
+
+        expect(router._routes[0].patternUrl).to.eql(url);
+        expect(router._routes[0].callback.name).to.equal('callback');
+
+    });
+
+
+    it('Expect matchurls to return false when the lengths of the urls do not match', function () {
+
+
+        let urlOne = '/home/category';
+        let urlTwo = '/home';
+
+        let result = router.matchUrls(urlOne, urlTwo);
+
+        expect(result).to.be.false;
+
+    });
+
+    it('Expect matchurls to return false when url constant segments do not match', function () {
+
+        let urlOne = '/category';
+        let urlTwo = '/home';
+
+        let result = router.matchUrls(urlOne, urlTwo);
+
+        expect(result).to.be.false;
+
+    });
+
+    it('Expect matchurls to return an object when a match is found', function () {
+
+
+        let urlOne = '/home/horror';
+        let urlTwo = '/home/:category';
+
+        let result = router.matchUrls(urlOne, urlTwo);
+
+        expect(result).to.be.an('object');
+
+
+    });
+
+    it('Expect matchurls to return an object with correct parameters when a match is found', function () {
+
+        let urlOne = '/home/horror';
+        let urlTwo = '/home/:category';
+
+        let result = router.matchUrls(urlOne, urlTwo);
+
+        expect(result).to.have.property('category');
+
+    });
+
+
+})
+
 
 
 mocha.run();
