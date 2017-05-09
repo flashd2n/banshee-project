@@ -1,0 +1,6 @@
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['register'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "<div class=\"container\">\r\n    <form class=\"form-signin\">\r\n        <h2 class=\"form-signin-heading\">Please sign in</h2>\r\n        <label for=\"inputEmail\" class=\"sr-only\">Email address</label>\r\n        <input type=\"email\" id=\"input-email\" class=\"form-control\" placeholder=\"Email address\" required=\"\" autofocus=\"\">\r\n\r\n        <label for=\"inputEmail\" class=\"sr-only\">Username</label>\r\n        <input type=\"email\" id=\"input-username\" class=\"form-control\" placeholder=\"Username\" required=\"\" autofocus=\"\">\r\n\r\n        <label for=\"inputPassword\" class=\"sr-only\">Password</label>\r\n        <input type=\"password\" id=\"input-password\" class=\"form-control\" placeholder=\"Password\" required=\"\">\r\n        <a href=\"#/processRegistration\" class=\"btn btn-lg btn-primary btn-block\">Sign In</a>\r\n    </form>\r\n</div>\r\n";
+},"useData":true});
+})();
